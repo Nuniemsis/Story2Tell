@@ -8,8 +8,13 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import android.view.LayoutInflater;
@@ -38,9 +43,14 @@ import java.util.Locale;
 public class MessagesAdapter extends
         RecyclerView.Adapter<MessagesAdapter.ViewHolder> {
 
+    boolean ratingExists = false;
     private ArrayList<Message> mMessages;
     private Context mContext;
     private DateFormat simpleDateFormat;
+    private FirebaseAuth mAuth;
+    private DatabaseReference databaseReferenceUsers;
+    private UserInformation information;
+
 
     public MessagesAdapter(Context context, ArrayList<Message> messages) {
 
@@ -84,6 +94,24 @@ public class MessagesAdapter extends
         final ProgressBar progressBarImage = viewHolder.progressBarImage;
         final RatingBar ratingBar = viewHolder.ratingBar;
 
+        databaseReferenceUsers = FirebaseDatabase.getInstance().getReference("users");
+
+        // Get current user
+        mAuth = FirebaseAuth.getInstance();
+        final FirebaseUser user = mAuth.getCurrentUser();
+
+        databaseReferenceUsers.child(user.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                information = snapshot.getValue(UserInformation.class);
+
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError){
+            }
+        });
+
+
         ratingBar.setRating(message.getRating());
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
 
@@ -95,10 +123,41 @@ public class MessagesAdapter extends
                 DatabaseReference usersRefMessages = ref.child("messages");
 
                 DatabaseReference thisMessage = usersRefMessages.child(message.getPushKey());
-                thisMessage.child("rating").setValue(rating);
 
-                message.setRating(rating);
-                ratingBar.setRating(rating);
+                thisMessage.child("peopleRatings").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot snapshot) {
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+
+                            if(dataSnapshot.getValue().equals(information.getUsername())){
+                                ratingExists = true;
+                            }
+                        }
+
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError){
+                    }
+                });
+
+
+                if(!ratingExists){
+                    // Set rating
+
+                    int numberRatings = message.getNumberRatings();
+                    numberRatings+=1;
+
+                    thisMessage.child("rating").setValue(rating);
+                    thisMessage.child("numberRatings").setValue(numberRatings);
+
+                    message.setRating(rating);
+                    // Update UI
+                    ratingBar.setRating(rating);
+
+                    thisMessage.child("peopleRatings")
+                            .child(information.getUsername())
+                            .setValue(information.getUsername());}
+
             }
         });
 
@@ -196,7 +255,6 @@ public class MessagesAdapter extends
             nameTextView = itemView.findViewById(R.id.nameTextView);
             messageTextView = itemView.findViewById(R.id.messageTextView);
             photoImageView = itemView.findViewById(R.id.photoImageView);
-
 
             progressBarImage = itemView.findViewById(R.id.progressBarImage);
             ratingBar = itemView.findViewById(R.id.ratingBar);

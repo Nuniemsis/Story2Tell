@@ -13,6 +13,7 @@ public class Message {
     public String photoUrl;
     public float rating;
     public String pushKey;
+    public int numberRatings;
 
     public float getRating(){
         return rating;
@@ -22,6 +23,9 @@ public class Message {
         this.rating = rating;
     }
 
+    public int getNumberRatings(){
+        return numberRatings;
+    }
 
     public Message() {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
