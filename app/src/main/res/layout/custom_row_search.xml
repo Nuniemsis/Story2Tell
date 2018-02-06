@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/nameSearchTextView"
+        android:layout_width="wrap_content"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/dateSearchTextView"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/dateSearchTextView"
+        android:layout_width="wrap_content"
+        android:textStyle="bold"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/nameSearchTextView"/>
+
+
+    <LinearLayout
+        android:id="@+id/llsearch"
+        app:layout_constraintTop_toBottomOf="@id/dateSearchTextView"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>

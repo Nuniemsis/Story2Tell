@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Story2Tell</string>
+    <string name="title_item_list">Items</string>
+    <string name="title_item_detail">Item Detail</string>
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+
+</resources>

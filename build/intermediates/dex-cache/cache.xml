@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/home/ncarvalho/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.2.2/d20be6a5ddd6f8cfd36ebf6dea329873a1c41f1b/jackson-core-2.2.2.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="26.0.2"
+        sha1="d20be6a5ddd6f8cfd36ebf6dea329873a1c41f1b">
+        <dex dex="/home/ncarvalho/AndroidStudioProjects/Story2Tell/app/build/intermediates/transforms/preDex/release/56.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ncarvalho/.gradle/caches/transforms-1/files-1.1/transition-26.0.2.aar/7b6a3ae61f1dec98b1401e19eb9331e7/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="26.0.2"
+        sha1="df0c541b5406292d1c3d74fc8ea119bde14e77b0">
+        <dex dex="/home/ncarvalho/AndroidStudioProjects/Story2Tell/app/build/intermediates/transforms/preDex/release/27.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ncarvalho/.gradle/caches/transforms-1/files-1.1/play-services-auth-base-11.8.0.aar/b7ca39d06cb5bbec731689ea6de990c1/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="26.0.2"
+        sha1="0a23c4daa97697118d96f2b09d1dbaf9ea943d8d">
+        <dex dex="/home/ncarvalho/AndroidStudioProjects/Story2Tell/app/build/intermediates/transforms/preDex/release/17.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ncarvalho/.gradle/caches/modules-2/files-2.1/com.firebase/firebase-client-jvm/2.5.2/91731b8f5868a3e8a8a773f29b8d06b5c358f5bb/firebase-client-jvm-2.5.2.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="26.0.2"
+        sha1="91731b8f5868a3e8a8a773f29b8d06b5c358f5bb">
+        <dex dex="/home/ncarvalho/AndroidStudioProjects/Story2Tell/app/build/intermediates/transforms/preDex/release/29.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ncarvalho/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.0.2.aar/85fb868efbe232e50a01c1a8229c0720/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="26.0.2"
+        sha1="94d358351559620a2c3d2ba3ac04d03a59a61bb3">
+        <dex dex="/home/ncarvalho/AndroidStudioProjects/Story2Tell/app/build/intermediates/transforms/preDex/release/5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ncarvalho/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.0.2.aar/69d16fd5d599d488b0a4798439cace0e/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="26.0.2"
+        sha1="97cd0ab3ffad045a162fc1a413fe6abc58e199c4">
+        <dex dex="/home/ncarvalho/AndroidStudioProjects/Story2Tell/app/build/intermediates/transforms/preDex/release/36.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ncarvalho/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-11.8.0.aar/bbd6aa9c98362ce56be5b3c92dc24180/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="26.0.2"
+        sha1="122de0d704f76d2bb5cb9db66e00fe90a0a41e78">
+        <dex dex="/home/ncarvalho/AndroidStudioProjects/Story2Tell/app/build/intermediates/transforms/preDex/release/21.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ncarvalho/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.0.2.aar/fcdbca047d13c666c7a9c2648d8a38f4/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="26.0.2"
+        sha1="b4a446c110c5a9f3a62907367d5eea4d4062c36a">
+        <dex dex="/home/ncarvalho/AndroidStudioProjects/Story2Tell/app/build/intermediates/transforms/preDex/release/33.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ncarvalho/.gradle/caches/transforms-1/files-1.1/design-26.0.2.aar/4084e6626ed7710035c27ae43be23cbb/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="26.0.2"
+        sha1="53762fb1daacc5e5fb9ce83c4d00365f71c10f1a">
+        <dex dex="/home/ncarvalho/AndroidStudioProjects/Story2Tell/app/build/intermediates/transforms/preDex/release/4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ncarvalho/.gradle/caches/modules-2/files-2.1/com.firebase/firebase-client-android/2.5.2/f19f10d6276aa0b380e2d05d2ab3272d693a5433/firebase-client-android-2.5.2.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="26.0.2"
+        sha1="f19f10d6276aa0b380e2d05d2ab3272d693a5433">
+        <dex dex="/home/ncarvalho/AndroidStudioProjects/Story2Tell/app/build/intermediates/transforms/preDex/release/2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ncarvalho/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.2.2/285cb9c666f0f0f3dd8a1be04e1f457eb7b15113/jackson-annotations-2.2.2.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="26.0.2"
+        sha1="285cb9c666f0f0f3dd8a1be04e1f457eb7b15113">
+        <dex dex="/home/ncarvalho/AndroidStudioProjects/Story2Tell/app/build/intermediates/transforms/preDex/release/55.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ncarvalho/.gradle/caches/transforms-1/files-1.1/firebase-common-11.8.0.aar/bb44c5206c5080bbf3d52b9c23e62851/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="26.0.2"
+        sha1="e6aeff19a2ce1eb896557be73cb9ceb56f8d1cf3">
+        <dex dex="/home/ncarvalho/AndroidStudioProjects/Story2Tell/app/build/intermediates/transforms/preDex/release/23.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ncarvalho/.gradle/caches/transforms-1/files-1.1/firebase-auth-11.8.0.aar/600afb1a8fc6abc5892d52052410d5c3/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="26.0.2"
+        sha1="c5bc72ad3250d065128d1d7514279be703e57bd0">
+        <dex dex="/home/ncarvalho/AndroidStudioProjects/Story2Tell/app/build/intermediates/transforms/preDex/release/15.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ncarvalho/.gradle/caches/modules-2/files-2.1/com.firebase/tubesock/0.0.12/6ec0bbd3e161a73ed672284b587fd32309a86d7a/tubesock-0.0.12.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="26.0.2"
+        sha1="6ec0bbd3e161a73ed672284b587fd32309a86d7a">
+        <dex dex="/home/ncarvalho/AndroidStudioProjects/Story2Tell/app/build/intermediates/transforms/preDex/release/49.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ncarvalho/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/dc8148623260d8b1d22325205d447e66/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="26.0.2"
+        sha1="264ad23f9752aabecfa41115c52a25a023a08839">
+        <dex dex="/home/ncarvalho/AndroidStudioProjects/Story2Tell/app/build/intermediates/transforms/preDex/release/22.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ncarvalho/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.0.2.aar/226d3b7f6309aaf7457b304475a4feb5/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="26.0.2"
+        sha1="28cb30c89c8e501ded77e960407731df6c54b844">
+        <dex dex="/home/ncarvalho/AndroidStudioProjects/Story2Tell/app/build/intermediates/transforms/preDex/release/13.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ncarvalho/.gradle/caches/transforms-1/files-1.1/firebase-storage-11.8.0.aar/3b04d2b1dea17d8fd31bf5cbd3620f43/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="26.0.2"
+        sha1="c59cc4d67084879423713a416182208836c0a29f">
+        <dex dex="/home/ncarvalho/AndroidStudioProjects/Story2Tell/app/build/intermediates/transforms/preDex/release/7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ncarvalho/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.0.2.aar/0649a08db308032b05fe993b0afed3b1/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="26.0.2"
+        sha1="eef44a34be1eef845ecb4072e3692b434af05ad4">
+        <dex dex="/home/ncarvalho/AndroidStudioProjects/Story2Tell/app/build/intermediates/transforms/preDex/release/35.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ncarvalho/.gradle/caches/transforms-1/files-1.1/play-services-auth-api-phone-11.8.0.aar/e965635cf968dc5e3b5fa11da4b69a51/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="26.0.2"
+        sha1="fe94ced585bffcf3c7f788a294cc54e6785544ac">
+        <dex dex="/home/ncarvalho/AndroidStudioProjects/Story2Tell/app/build/intermediates/transforms/preDex/release/16.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ncarvalho/.gradle/caches/transforms-1/files-1.1/support-v4-26.0.2.aar/80464498e6dd1b41ee8331fb2490affd/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="26.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/home/ncarvalho/AndroidStudioProjects/Story2Tell/app/build/intermediates/transforms/preDex/release/28.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ncarvalho/.gradle/caches/transforms-1/files-1.1/play-services-basement-11.8.0.aar/aa7c2c55ce843be09f60d1cdf7ffacb9/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="26.0.2"
+        sha1="5ad3911825107d8dd4b017fdecebfd23c08048dd">
+        <dex dex="/home/ncarvalho/AndroidStudioProjects/Story2Tell/app/build/intermediates/transforms/preDex/release/26.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ncarvalho/.gradle/caches/transforms-1/files-1.1/firebase-database-connection-11.8.0.aar/f4db93b9180a2981bdea335b715aeb4c/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="26.0.2"
+        sha1="ed04a0ae7198b0d5d0e965d6afdb0fe784dcfbee">
+        <dex dex="/home/ncarvalho/AndroidStudioProjects/Story2Tell/app/build/intermediates/transforms/preDex/release/19.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ncarvalho/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/glide/3.8.0/9bada650e1afe9c6174ddc0d113c1fce4dc26fe0/glide-3.8.0.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="26.0.2"
+        sha1="9bada650e1afe9c6174ddc0d113c1fce4dc26fe0">
+        <dex dex="/home/ncarvalho/AndroidStudioProjects/Story2Tell/app/build/intermediates/transforms/preDex/release/8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ncarvalho/.gradle/caches/transforms-1/files-1.1/support-compat-26.0.2.aar/a40c998140007b23c9df39ffa8000e95/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="26.0.2"
+        sha1="138b5e3a5341bb37117b13f327de68f81f9f0669">
+        <dex dex="/home/ncarvalho/AndroidStudioProjects/Story2Tell/app/build/intermediates/transforms/preDex/release/37.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ncarvalho/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/7cc6bdddc8cb2d4d9f2cb9b025db6a6c/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="26.0.2"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="/home/ncarvalho/AndroidStudioProjects/Story2Tell/app/build/intermediates/transforms/preDex/release/14.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ncarvalho/.gradle/caches/transforms-1/files-1.1/android-image-cropper-2.3.1.aar/d7358347542bcb933654d7aa105466c1/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="26.0.2"
+        sha1="1a32a39a9fcae3d354a312cdb78c18159fa702e6">
+        <dex dex="/home/ncarvalho/AndroidStudioProjects/Story2Tell/app/build/intermediates/transforms/preDex/release/11.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ncarvalho/.gradle/caches/transforms-1/files-1.1/firebase-messaging-11.8.0.aar/5aa97698479a236a01ba082f31bde42d/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="26.0.2"
+        sha1="c44026185adf61f12630db36ac6781481f559e7c">
+        <dex dex="/home/ncarvalho/AndroidStudioProjects/Story2Tell/app/build/intermediates/transforms/preDex/release/6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ncarvalho/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.0.2.aar/abec00802ef5cfb4e9bdadbd9e5cb9cd/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="26.0.2"
+        sha1="4e38f488b591fa8ef9dce3e21752c92bde5f6f7c">
+        <dex dex="/home/ncarvalho/AndroidStudioProjects/Story2Tell/app/build/intermediates/transforms/preDex/release/32.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ncarvalho/.gradle/caches/transforms-1/files-1.1/firebase-storage-common-11.8.0.aar/ea5a032e7e7a5a2197ba4d775978d64f/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="26.0.2"
+        sha1="08bbb31d3aae0e337647a49575c2d1f1ec7d6996">
+        <dex dex="/home/ncarvalho/AndroidStudioProjects/Story2Tell/app/build/intermediates/transforms/preDex/release/25.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ncarvalho/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.0.2.aar/fb8c8a962d5f0eb4081e8126b7129b93/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="26.0.2"
+        sha1="48a969b476c5c4bd8cabfe295428ff222bc68b8e">
+        <dex dex="/home/ncarvalho/AndroidStudioProjects/Story2Tell/app/build/intermediates/transforms/preDex/release/34.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ncarvalho/.gradle/caches/transforms-1/files-1.1/play-services-auth-11.8.0.aar/7e0c3e7c0f25fc479c1c5e91b0e029f5/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="26.0.2"
+        sha1="6746a3078625563a9eb381920f34e47ccd6bab87">
+        <dex dex="/home/ncarvalho/AndroidStudioProjects/Story2Tell/app/build/intermediates/transforms/preDex/release/1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ncarvalho/.gradle/caches/transforms-1/files-1.1/play-services-tasks-11.8.0.aar/a2b8a3ca566f1356e89449cc0b659ce8/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="26.0.2"
+        sha1="d2af2ef4d987d753f2e8ee2d1480ab964d5c7273">
+        <dex dex="/home/ncarvalho/AndroidStudioProjects/Story2Tell/app/build/intermediates/transforms/preDex/release/24.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ncarvalho/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="26.0.2"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="/home/ncarvalho/AndroidStudioProjects/Story2Tell/app/build/intermediates/transforms/preDex/release/10.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ncarvalho/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/0cc5780b3f1993c3570bff81169b4725/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="26.0.2"
+        sha1="233d88c6f961d2a84758dfe27b7af61318190c7b">
+        <dex dex="/home/ncarvalho/AndroidStudioProjects/Story2Tell/app/build/intermediates/transforms/preDex/release/18.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ncarvalho/.gradle/caches/transforms-1/files-1.1/firebase-database-11.8.0.aar/44b1113576f38b5b8e7d063597ad0a54/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="26.0.2"
+        sha1="1b982cc8b5ab6f788690238dbe3ac3bb19f88b1a">
+        <dex dex="/home/ncarvalho/AndroidStudioProjects/Story2Tell/app/build/intermediates/transforms/preDex/release/3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ncarvalho/.gradle/caches/transforms-1/files-1.1/firebase-jobdispatcher-0.5.2.aar/b36ee57a986f72fa243cf6816d6ac9e3/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="26.0.2"
+        sha1="5a424dda1dfed15a9ca112aa128107b948e30e82">
+        <dex dex="/home/ncarvalho/AndroidStudioProjects/Story2Tell/app/build/intermediates/transforms/preDex/release/9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ncarvalho/.gradle/caches/modules-2/files-2.1/com.android.support/support-annotations/26.0.2/8b68a849722b44f584e2d68c451c5e3844c10380/support-annotations-26.0.2.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="26.0.2"
+        sha1="8b68a849722b44f584e2d68c451c5e3844c10380">
+        <dex dex="/home/ncarvalho/AndroidStudioProjects/Story2Tell/app/build/intermediates/transforms/preDex/release/38.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ncarvalho/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/90ade49188c1957e38115b3410af814e/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="26.0.2"
+        sha1="42c9659c973e311ffdb645ed057e5053e0ab5c78">
+        <dex dex="/home/ncarvalho/AndroidStudioProjects/Story2Tell/app/build/intermediates/transforms/preDex/release/20.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ncarvalho/.gradle/caches/transforms-1/files-1.1/support-fragment-26.0.2.aar/ab2ed2a372fbaf498673e23d0555e04d/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="26.0.2"
+        sha1="f9f219b8a8acc35922ab06f4ff29769041481b4b">
+        <dex dex="/home/ncarvalho/AndroidStudioProjects/Story2Tell/app/build/intermediates/transforms/preDex/release/31.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ncarvalho/Android/Sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.2/constraint-layout-solver-1.0.2.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="26.0.2"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="/home/ncarvalho/AndroidStudioProjects/Story2Tell/app/build/intermediates/transforms/preDex/release/41.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/ncarvalho/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.2.2/3c8f6018eaa72d43b261181e801e6f8676c16ef6/jackson-databind-2.2.2.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="26.0.2"
+        sha1="3c8f6018eaa72d43b261181e801e6f8676c16ef6">
+        <dex dex="/home/ncarvalho/AndroidStudioProjects/Story2Tell/app/build/intermediates/transforms/preDex/release/48.jar" />
+    </item>
+
+</items>

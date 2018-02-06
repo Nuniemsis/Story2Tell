@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "398318962078",
+    "firebase_url": "https://story2tell-70d82.firebaseio.com",
+    "project_id": "story2tell-70d82",
+    "storage_bucket": "story2tell-70d82.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:398318962078:android:5148aede8d1bb95e",
+        "android_client_info": {
+          "package_name": "com.example.ncarvalho.story2tell"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "398318962078-82q1ohhptg34sre7180th343plt6jv56.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ncarvalho.story2tell",
+            "certificate_hash": "18299b2268b7de29b2f0f0e502165f614352f004"
+          }
+        },
+        {
+          "client_id": "398318962078-k180jl02epinml8u252aibv3cjkue4j1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ncarvalho.story2tell",
+            "certificate_hash": "65aa3d5cb909b2341c13759665355124ec1e39fe"
+          }
+        },
+        {
+          "client_id": "398318962078-8iff6gpdfl35tnel2n76fhfgcr386ip0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5jB_z-PqdOnhE8cWW5us6aPk2nsA2cHs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "398318962078-8iff6gpdfl35tnel2n76fhfgcr386ip0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
