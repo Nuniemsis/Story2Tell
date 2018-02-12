@@ -39,6 +39,7 @@
         android:layout_weight="0.5"
         android:singleLine="true"
         android:hint="Enter username" />
+
     <EditText
         android:id="@+id/editTextPassword"
         android:inputType="textPassword"

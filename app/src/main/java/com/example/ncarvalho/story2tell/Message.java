@@ -1,6 +1,8 @@
 package com.example.ncarvalho.story2tell;
 
 
+import java.util.ArrayList;
+
 /**
  * Created by ncarvalho on 5/01/18.
  */
@@ -14,6 +16,7 @@ public class Message {
     public float rating;
     public String pushKey;
     public int numberRatings;
+    public ArrayList<String> raters = new ArrayList<String>();
 
     public float getRating(){
         return rating;
@@ -23,12 +26,21 @@ public class Message {
         this.rating = rating;
     }
 
-    public int getNumberRatings(){
+    public ArrayList<String> getRaters() {
+        return raters;
+    }
+
+    public int getNumberRatings() {
         return numberRatings;
     }
 
+
     public Message() {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
+    }
+
+    public void addRater(String rater) {
+        raters.add(rater);
     }
 
     public String getPhotoUrl(){
@@ -46,7 +58,9 @@ public class Message {
         this.date = date;
         this.photoUrl  = photoUrl;
         this.pushKey = pushKey;
+
     }
+
 
     public String getName() {
 

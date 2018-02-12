@@ -3,20 +3,32 @@ package com.example.ncarvalho.story2tell;
 import android.content.Context;
 
 import android.graphics.Color;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
+import com.firebase.client.FirebaseError;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.TaskCompletionSource;
+import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.MutableData;
+import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.StorageMetadata;
 import com.squareup.picasso.Picasso;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +37,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.text.Format;
@@ -32,7 +45,13 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Semaphore;
+
+import static android.content.ContentValues.TAG;
+import static com.google.android.gms.tasks.Tasks.await;
 
 /**
  * Created by ncarvalho on 1/01/18.
@@ -43,20 +62,21 @@ import java.util.Locale;
 public class MessagesAdapter extends
         RecyclerView.Adapter<MessagesAdapter.ViewHolder> {
 
-    boolean ratingExists = false;
     private ArrayList<Message> mMessages;
     private Context mContext;
     private DateFormat simpleDateFormat;
     private FirebaseAuth mAuth;
     private DatabaseReference databaseReferenceUsers;
     private UserInformation information;
-
+    private boolean ratingExist = false;
 
     public MessagesAdapter(Context context, ArrayList<Message> messages) {
 
         mMessages = messages;
         mContext = context;
 
+        // Set the user name
+        loadUserName();
     }
 
     // Easy access to the context object in the recyclerview
@@ -78,9 +98,7 @@ public class MessagesAdapter extends
     }
 
 
-    public void onBindViewHolder(MessagesAdapter.ViewHolder viewHolder, int position) {
-        // Get the data model based on position
-        final Message message = mMessages.get(position);
+    private void updateViewHolderElements(ViewHolder viewHolder, Message message) {
 
         final String hour;
         final String minute;
@@ -92,76 +110,6 @@ public class MessagesAdapter extends
         final TextView messageTextView = viewHolder.messageTextView;
         final TextView nameTextView = viewHolder.nameTextView;
         final ProgressBar progressBarImage = viewHolder.progressBarImage;
-        final RatingBar ratingBar = viewHolder.ratingBar;
-
-        databaseReferenceUsers = FirebaseDatabase.getInstance().getReference("users");
-
-        // Get current user
-        mAuth = FirebaseAuth.getInstance();
-        final FirebaseUser user = mAuth.getCurrentUser();
-
-        databaseReferenceUsers.child(user.getUid()).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                information = snapshot.getValue(UserInformation.class);
-
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError){
-            }
-        });
-
-
-        ratingBar.setRating(message.getRating());
-        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference ref = database.getReference();
-                DatabaseReference usersRefMessages = ref.child("messages");
-
-                DatabaseReference thisMessage = usersRefMessages.child(message.getPushKey());
-
-                thisMessage.child("peopleRatings").addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot snapshot) {
-                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-
-                            if(dataSnapshot.getValue().equals(information.getUsername())){
-                                ratingExists = true;
-                            }
-                        }
-
-                    }
-                    @Override
-                    public void onCancelled(DatabaseError databaseError){
-                    }
-                });
-
-
-                if(!ratingExists){
-                    // Set rating
-
-                    int numberRatings = message.getNumberRatings();
-                    numberRatings+=1;
-
-                    thisMessage.child("rating").setValue(rating);
-                    thisMessage.child("numberRatings").setValue(numberRatings);
-
-                    message.setRating(rating);
-                    // Update UI
-                    ratingBar.setRating(rating);
-
-                    thisMessage.child("peopleRatings")
-                            .child(information.getUsername())
-                            .setValue(information.getUsername());}
-
-            }
-        });
-
-
 
         simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy-HH-MM-SS");
 
@@ -221,8 +169,98 @@ public class MessagesAdapter extends
 
         String displayName = String.format(Locale.US, "%s", message.getName());
         nameTextView.setText(displayName + messageDateString);
+    }
+
+    private void loadUserName() {
+
+        databaseReferenceUsers = FirebaseDatabase.getInstance().getReference("users");
+
+        // Get current user
+        mAuth = FirebaseAuth.getInstance();
+        final FirebaseUser user = mAuth.getCurrentUser();
+
+        databaseReferenceUsers.child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                information = dataSnapshot.getValue(UserInformation.class);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+
 
     }
+
+
+    private void setRatings(RatingBar ratingBar, final Message message) {
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference();
+        DatabaseReference usersRefMessages = ref.child("messages");
+        final DatabaseReference thisMessageRef = usersRefMessages.child(message.getPushKey());
+
+        ratingBar.setRating(message.getRating());
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+
+                onStarClicked(thisMessageRef, ratingBar, rating);
+            }
+        });
+    }
+
+    private void onStarClicked(DatabaseReference postRef, final RatingBar ratingBar, final float rating) {
+        postRef.runTransaction(new Transaction.Handler() {
+            @Override
+            public Transaction.Result doTransaction(MutableData mutableData) {
+
+                Message p = mutableData.getValue(Message.class);
+                if (p == null) {
+                    return Transaction.success(mutableData);
+                }
+
+                if (!p.getRaters().contains(information.getUsername())) {
+
+                    ratingBar.setRating(rating);
+                    p.setRating(rating);
+
+                    p.addRater(information.getUsername());
+                    int numberRatings = p.getNumberRatings();
+                    p.numberRatings = numberRatings + 1;
+
+                    // Set value and report transaction success
+                    mutableData.setValue(p);
+                }
+                return Transaction.success(mutableData);
+            }
+
+            @Override
+            public void onComplete(DatabaseError databaseError, boolean b,
+                                   DataSnapshot dataSnapshot) {
+                // Transaction completed
+                Log.d(TAG, "postTransaction:onComplete:" + databaseError);
+            }
+        });
+    }
+
+
+    public void onBindViewHolder(MessagesAdapter.ViewHolder viewHolder, int position) {
+        // Get the data model based on position
+        final Message message = mMessages.get(position);
+        final RatingBar ratingBar = viewHolder.ratingBar;
+
+        setRatings(ratingBar, message);
+        // Update viewHolder
+        updateViewHolderElements(viewHolder, message);
+
+    }
+
+
+
 
     @Override
     public int getItemCount() {
@@ -258,6 +296,7 @@ public class MessagesAdapter extends
 
             progressBarImage = itemView.findViewById(R.id.progressBarImage);
             ratingBar = itemView.findViewById(R.id.ratingBar);
+
 
             linearLayout = itemView.findViewById(R.id.linearLayout);
             // Store the context

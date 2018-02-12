@@ -66,13 +66,17 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         removeBar();
+
+
         setContentView(R.layout.activity_login);
 
         button = (SignInButton) findViewById(R.id.googleBtn);
+
         mAuth = FirebaseAuth.getInstance();
 
         mFirebaseDatabase = FirebaseDatabase.getInstance();
@@ -120,7 +124,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                     }
                 }
         ).addApi(Auth.GOOGLE_SIGN_IN_API,gso).build();
-
 
     }
 
@@ -178,7 +181,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     }
 
 
-
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
@@ -217,7 +219,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
 
                             usersRef = FirebaseDatabase.getInstance().getReference().child("users");
-
 
                             usersRef.child(user.getUid()).
                                     addValueEventListener(new ValueEventListener() {
@@ -271,9 +272,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                                                 }
 
                                             }
-
                                         }
-
                                         @Override public void onCancelled (DatabaseError databaseError){
 
                                         }

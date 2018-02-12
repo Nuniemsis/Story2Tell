@@ -427,7 +427,6 @@ public class MainActivity extends AppCompatActivity {
         CropImage.activity(imageUri)
                 .setMultiTouchEnabled(true)
                 .setFixAspectRatio(true)
-                //.setAspectRatio(width, height)
                 .setMinCropResultSize(minImageWidth, minImageHeight)
                 .setMaxCropResultSize(maxImageWidth, maxImageHeight)
                 .setAutoZoomEnabled(true)
