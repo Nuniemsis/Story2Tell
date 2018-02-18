@@ -177,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
         linearLayoutManager.setReverseLayout(true);
 
         messageRecycler.setLayoutManager(linearLayoutManager);
-        messageRecycler.scrollToPosition(50);
+        messageRecycler.scrollToPosition(10);
 
         progressDialog = new ProgressDialog(MainActivity.this);
         progressDialog.setMessage("Loading Data");

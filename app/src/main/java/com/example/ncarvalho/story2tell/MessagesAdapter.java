@@ -176,8 +176,7 @@ public class MessagesAdapter extends
             month = getMonth(calendar.get(Calendar.MONTH));
             year = Integer.toString(calendar.get(Calendar.YEAR));
 
-            messageDateString = "\n" + day + " de " + month + " de " + year + " a las " + hour +
-                    " horas " + minute + " minutos";
+            messageDateString = "\n" + hour + " : " + minute +" " + day  + month + year ;
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -273,51 +272,51 @@ public class MessagesAdapter extends
 
         switch (month) {
             case 0:
-                stringMonth = "Enero";
+                stringMonth = "Ene";
                 break;
 
             case 1:
-                stringMonth = "Febrero";
+                stringMonth = "Feb";
                 break;
 
             case 2:
-                stringMonth = "Enero";
+                stringMonth = "Mar";
                 break;
 
             case 3:
-                stringMonth = "Febrero";
+                stringMonth = "Abr";
                 break;
 
             case 4:
-                stringMonth = "Enero";
+                stringMonth = "May";
                 break;
 
             case 5:
-                stringMonth = "Febrero";
+                stringMonth = "Jun";
                 break;
 
             case 6:
-                stringMonth = "Enero";
+                stringMonth = "Jul";
                 break;
 
             case 7:
-                stringMonth = "Febrero";
+                stringMonth = "Ago";
                 break;
 
             case 8:
-                stringMonth = "Enero";
+                stringMonth = "Sep";
                 break;
 
             case 9:
-                stringMonth = "Febrero";
+                stringMonth = "Oct";
                 break;
 
             case 10:
-                stringMonth = "Enero";
+                stringMonth = "Nov";
                 break;
 
             case 11:
-                stringMonth = "Febrero";
+                stringMonth = "Dic";
                 break;
             default:
                 stringMonth = "";
