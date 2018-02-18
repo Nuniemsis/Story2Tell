@@ -209,6 +209,7 @@ public class MainActivity extends AppCompatActivity {
                 // Setting recycler for the first time
                 if(firstTime) {
                     messageRecycler.setAdapter(adapter);
+                    messageRecycler.getLayoutManager().scrollToPosition(0);
                     progressDialog.dismiss();
                     firstTime = false;
                 }
