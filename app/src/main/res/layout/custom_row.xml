@@ -67,13 +67,46 @@
         android:layout_marginLeft="16dp"
         android:elevation="6dp"/>
 
-    <RatingBar
-        android:id="@+id/ratingBar"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:numStars="5"
-        android:stepSize="1.0" />
+        android:background="@drawable/bg_list_row"
+        android:clickable="true"
+        android:layout_marginLeft="20dp"
+        android:focusable="true"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:id="@+id/ratingslinearlayout">
 
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:layout_weight="1"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:stepSize="1" />
+
+
+        <TextView
+            android:id="@+id/meanratings"
+            android:layout_width="0dp"
+            android:textSize="20sp"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_weight="1"
+            android:id="@+id/numberratings"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="top"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
 
 </LinearLayout>

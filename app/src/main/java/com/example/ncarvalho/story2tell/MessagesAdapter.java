@@ -68,7 +68,6 @@ public class MessagesAdapter extends
     private FirebaseAuth mAuth;
     private DatabaseReference databaseReferenceUsers;
     private UserInformation information;
-    private boolean ratingExist = false;
 
     public MessagesAdapter(Context context, ArrayList<Message> messages) {
 
@@ -110,6 +109,7 @@ public class MessagesAdapter extends
         final TextView messageTextView = viewHolder.messageTextView;
         final TextView nameTextView = viewHolder.nameTextView;
         final ProgressBar progressBarImage = viewHolder.progressBarImage;
+        final TextView numberRatingTextView = viewHolder.numberRatingTextView;
 
         simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy-HH-MM-SS");
 
@@ -164,6 +164,10 @@ public class MessagesAdapter extends
             messageTextView.setText(String.format(Locale.US, "%s", message.getMessage()));
         }
 
+
+        // Number of ratings
+        numberRatingTextView.setText("Total : " + Integer.toString(message.getNumberRatings()));
+
         nameTextView.setText(message.getName());
         nameTextView.setVisibility(View.VISIBLE);
 
@@ -195,12 +199,13 @@ public class MessagesAdapter extends
     }
 
 
-    private void setRatings(RatingBar ratingBar, final Message message) {
+    private void setRatings(RatingBar ratingBar, final TextView meanRatingTextView, final Message message) {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference();
         DatabaseReference usersRefMessages = ref.child("messages");
         final DatabaseReference thisMessageRef = usersRefMessages.child(message.getPushKey());
+
 
         ratingBar.setRating(message.getRating());
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
@@ -208,29 +213,50 @@ public class MessagesAdapter extends
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
 
-                onStarClicked(thisMessageRef, ratingBar, rating);
+
+                // Update total count. Update users that rated the content
+                onStarClicked(thisMessageRef, ratingBar, meanRatingTextView, rating);
+
             }
         });
     }
 
-    private void onStarClicked(DatabaseReference postRef, final RatingBar ratingBar, final float rating) {
+    private void onStarClicked(DatabaseReference postRef, final RatingBar ratingBar,
+                               final TextView meanRatingTextView, final float rating) {
+
         postRef.runTransaction(new Transaction.Handler() {
             @Override
             public Transaction.Result doTransaction(MutableData mutableData) {
+
+
+                float actualRating;
 
                 Message p = mutableData.getValue(Message.class);
                 if (p == null) {
                     return Transaction.success(mutableData);
                 }
 
+
                 if (!p.getRaters().contains(information.getUsername())) {
 
-                    ratingBar.setRating(rating);
-                    p.setRating(rating);
+
+                    if (p.numberRatings == 0) {
+
+                        actualRating = rating;
+
+                    } else {
+
+                        actualRating = (p.getNumberRatings() * p.getRating() + rating) / (p.getNumberRatings() + 1);
+
+                    }
 
                     p.addRater(information.getUsername());
                     int numberRatings = p.getNumberRatings();
                     p.numberRatings = numberRatings + 1;
+
+
+                    ratingBar.setRating(actualRating);
+                    p.setRating(actualRating);
 
                     // Set value and report transaction success
                     mutableData.setValue(p);
@@ -243,6 +269,10 @@ public class MessagesAdapter extends
                                    DataSnapshot dataSnapshot) {
                 // Transaction completed
                 Log.d(TAG, "postTransaction:onComplete:" + databaseError);
+                ratingBar.setVisibility(View.GONE);
+                meanRatingTextView.setText("Mean : " + Float.toString(rating));
+                meanRatingTextView.setVisibility(View.VISIBLE);
+                meanRatingTextView.setEnabled(false);
             }
         });
     }
@@ -252,8 +282,9 @@ public class MessagesAdapter extends
         // Get the data model based on position
         final Message message = mMessages.get(position);
         final RatingBar ratingBar = viewHolder.ratingBar;
+        final TextView meanRatingTextView = viewHolder.meanRatingTextView;
 
-        setRatings(ratingBar, message);
+        setRatings(ratingBar, meanRatingTextView, message);
         // Update viewHolder
         updateViewHolderElements(viewHolder, message);
 
@@ -276,10 +307,12 @@ public class MessagesAdapter extends
 
         public TextView messageTextView;
         public TextView nameTextView;
+        public TextView numberRatingTextView;
         public ImageView photoImageView;
         public LinearLayout linearLayout;
         public ProgressBar progressBarImage;
         public RatingBar ratingBar;
+        public TextView meanRatingTextView;
 
         private Context context;
 
@@ -292,11 +325,13 @@ public class MessagesAdapter extends
 
             nameTextView = itemView.findViewById(R.id.nameTextView);
             messageTextView = itemView.findViewById(R.id.messageTextView);
+            numberRatingTextView = itemView.findViewById(R.id.numberratings);
+
             photoImageView = itemView.findViewById(R.id.photoImageView);
 
             progressBarImage = itemView.findViewById(R.id.progressBarImage);
             ratingBar = itemView.findViewById(R.id.ratingBar);
-
+            meanRatingTextView = itemView.findViewById(R.id.meanratings);
 
             linearLayout = itemView.findViewById(R.id.linearLayout);
             // Store the context

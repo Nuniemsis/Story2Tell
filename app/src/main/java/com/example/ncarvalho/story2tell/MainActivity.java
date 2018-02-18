@@ -24,6 +24,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.firebase.client.Firebase;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.ConnectionResult;
@@ -39,6 +40,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -49,6 +51,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import static android.widget.LinearLayout.VERTICAL;
 
@@ -114,6 +118,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 information = snapshot.getValue(UserInformation.class);
+                // Listen to notifications
+                //FirebaseMessaging.getInstance().subscribeToTopic("user_" + information.getUsername());
+                FirebaseMessaging.getInstance().subscribeToTopic("topics");
+
 
             }
             @Override
@@ -132,6 +140,7 @@ public class MainActivity extends AppCompatActivity {
                         messageEditText.getText().toString().trim().length() <
                                 getApplicationContext().getResources().getInteger(R.integer.max_characters)) {
                     saveMessage(information.getUsername(), messageEditText.getText().toString().trim());
+
 
                 }
             }
@@ -223,6 +232,8 @@ public class MainActivity extends AppCompatActivity {
                 onSelectImage(view);
             }
         });
+
+
     }
     public void onSelectImage(View view){
         CropImage.startPickImageActivity(this);
@@ -258,6 +269,16 @@ public class MainActivity extends AppCompatActivity {
 
         // Store message in database
         messagePush.setValue(mmessage);
+
+        DatabaseReference ref = database.getReference().child("notifications").push();
+
+        Map notification = new HashMap<>();
+        notification.put("username", information.getUsername());
+        notification.put("message", message);
+
+        ref.setValue(notification);
+
+
     }
 
     private void signOut() {
@@ -289,6 +310,19 @@ public class MainActivity extends AppCompatActivity {
         inflater_settings.inflate(R.menu.options, menu);
 
         return true;
+    }
+
+
+    public void sendNotificationToUser(String user, final String message) {
+
+        database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference().child("notificationRequests");
+
+        Map notification = new HashMap<>();
+        notification.put("username", user);
+        notification.put("message", message);
+
+        ref.push().setValue(notification);
     }
 
     @Override
