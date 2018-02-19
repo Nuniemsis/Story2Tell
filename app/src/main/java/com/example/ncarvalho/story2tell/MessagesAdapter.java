@@ -39,6 +39,8 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 import java.text.DateFormat;
 import java.text.Format;
 import java.text.SimpleDateFormat;
@@ -110,6 +112,7 @@ public class MessagesAdapter extends
         final TextView nameTextView = viewHolder.nameTextView;
         final ProgressBar progressBarImage = viewHolder.progressBarImage;
         final TextView numberRatingTextView = viewHolder.numberRatingTextView;
+        final TextView meanTextView = viewHolder.meanTextView;
 
         simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy-HH-MM-SS");
 
@@ -199,7 +202,8 @@ public class MessagesAdapter extends
     }
 
 
-    private void setRatings(RatingBar ratingBar, final RatingBar meanRatingBar, final Message message) {
+    private void setRatings(RatingBar ratingBar, final RatingBar meanRatingBar,
+                            final Message message, final TextView meanText) {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference();
@@ -215,14 +219,14 @@ public class MessagesAdapter extends
 
 
                 // Update total count. Update users that rated the content
-                onStarClicked(thisMessageRef, ratingBar, meanRatingBar, rating);
+                onStarClicked(thisMessageRef, ratingBar, meanRatingBar, rating, meanText);
 
             }
         });
     }
 
     private void onStarClicked(DatabaseReference postRef, final RatingBar ratingBar,
-                               final RatingBar meanRatingBar, final float rating) {
+                               final RatingBar meanRatingBar, final float rating, final TextView meanText) {
 
         postRef.runTransaction(new Transaction.Handler() {
             @Override
@@ -273,7 +277,12 @@ public class MessagesAdapter extends
                 if (ratingBar.getVisibility() != View.GONE) {
                     ratingBar.setVisibility(View.GONE);
                     meanRatingBar.setRating(rating);
+                    meanText.setVisibility(View.VISIBLE);
+                    meanText.setText("Mean Rating: " + Float.toString(rating));
                     meanRatingBar.setVisibility(View.VISIBLE);
+                    meanRatingBar.setClickable(false);
+                    meanRatingBar.setIsIndicator(true);
+
                 }
 
             }
@@ -286,8 +295,9 @@ public class MessagesAdapter extends
         final Message message = mMessages.get(position);
         final RatingBar ratingBar = viewHolder.ratingBar;
         final RatingBar meanRatingBar = viewHolder.meanRatingBar;
+        final TextView meanTextView = viewHolder.meanTextView;
 
-        setRatings(ratingBar, meanRatingBar, message);
+        setRatings(ratingBar, meanRatingBar, message, meanTextView);
         // Update viewHolder
         updateViewHolderElements(viewHolder, message);
 
@@ -316,6 +326,7 @@ public class MessagesAdapter extends
         public ProgressBar progressBarImage;
         public RatingBar ratingBar;
         public RatingBar meanRatingBar;
+        public TextView meanTextView;
 
         private Context context;
 
@@ -335,7 +346,7 @@ public class MessagesAdapter extends
             progressBarImage = itemView.findViewById(R.id.progressBarImage);
             ratingBar = itemView.findViewById(R.id.ratingBar);
             meanRatingBar = itemView.findViewById(R.id.meanratings);
-
+            meanTextView = itemView.findViewById(R.id.meantext);
             linearLayout = itemView.findViewById(R.id.linearLayout);
             // Store the context
             this.context = context;
