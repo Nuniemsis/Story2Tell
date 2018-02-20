@@ -3,19 +3,8 @@ package com.example.ncarvalho.story2tell;
 import android.content.Context;
 
 import android.graphics.Color;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.target.Target;
-import com.firebase.client.FirebaseError;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.gms.tasks.TaskCompletionSource;
-import com.google.android.gms.tasks.Tasks;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -25,7 +14,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.MutableData;
 import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.StorageMetadata;
 import com.squareup.picasso.Picasso;
 
 import android.util.Log;
@@ -37,23 +25,15 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 import java.text.DateFormat;
-import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Semaphore;
 
 import static android.content.ContentValues.TAG;
-import static com.google.android.gms.tasks.Tasks.await;
 
 /**
  * Created by ncarvalho on 1/01/18.
@@ -112,7 +92,6 @@ public class MessagesAdapter extends
         final TextView nameTextView = viewHolder.nameTextView;
         final ProgressBar progressBarImage = viewHolder.progressBarImage;
         final TextView numberRatingTextView = viewHolder.numberRatingTextView;
-        final TextView meanTextView = viewHolder.meanTextView;
 
         simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy-HH-MM-SS");
 
@@ -169,7 +148,7 @@ public class MessagesAdapter extends
 
 
         // Number of ratings
-        numberRatingTextView.setText("Total : " + Integer.toString(message.getNumberRatings()));
+        numberRatingTextView.setText("Total ratings: " + Integer.toString(message.getNumberRatings()));
 
         nameTextView.setText(message.getName());
         nameTextView.setVisibility(View.VISIBLE);
@@ -203,7 +182,7 @@ public class MessagesAdapter extends
 
 
     private void setRatings(RatingBar ratingBar, final RatingBar meanRatingBar,
-                            final Message message, final TextView meanText) {
+                            final Message message) {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference();
@@ -218,14 +197,14 @@ public class MessagesAdapter extends
 
 
                 // Update total count. Update users that rated the content
-                onStarClicked(thisMessageRef, ratingBar, meanRatingBar, rating, meanText);
+                onStarClicked(thisMessageRef, ratingBar, meanRatingBar, rating);
 
             }
         });
     }
 
     private void onStarClicked(DatabaseReference postRef, final RatingBar ratingBar,
-                               final RatingBar meanRatingBar, final float rating, final TextView meanText) {
+                               final RatingBar meanRatingBar, final float rating) {
 
         postRef.runTransaction(new Transaction.Handler() {
             @Override
@@ -259,7 +238,6 @@ public class MessagesAdapter extends
 
 
                     meanRatingBar.setRating(actualRating);
-                    meanText.setText("Mean Rating: " + Float.toString(rating));
                     p.setRating(actualRating);
 
                     // Set value and report transaction success
@@ -275,7 +253,10 @@ public class MessagesAdapter extends
                 Log.d(TAG, "postTransaction:onComplete:" + databaseError);
 
                 if (ratingBar.getVisibility() != View.GONE) {
-                    ratingBar.setVisibility(View.GONE);
+                    ratingBar.setRating(rating);
+                    ratingBar.setClickable(false);
+                    ratingBar.setIsIndicator(true);
+
                     meanRatingBar.setVisibility(View.VISIBLE);
                     meanRatingBar.setClickable(false);
                     meanRatingBar.setIsIndicator(true);
@@ -293,9 +274,8 @@ public class MessagesAdapter extends
         final Message message = mMessages.get(position);
         final RatingBar ratingBar = viewHolder.ratingBar;
         final RatingBar meanRatingBar = viewHolder.meanRatingBar;
-        final TextView meanTextView = viewHolder.meanTextView;
 
-        setRatings(ratingBar, meanRatingBar, message, meanTextView);
+        setRatings(ratingBar, meanRatingBar, message);
         // Update viewHolder
         updateViewHolderElements(viewHolder, message);
 
@@ -324,7 +304,6 @@ public class MessagesAdapter extends
         public ProgressBar progressBarImage;
         public RatingBar ratingBar;
         public RatingBar meanRatingBar;
-        public TextView meanTextView;
 
         private Context context;
 
@@ -344,7 +323,6 @@ public class MessagesAdapter extends
             progressBarImage = itemView.findViewById(R.id.progressBarImage);
             ratingBar = itemView.findViewById(R.id.ratingBar);
             meanRatingBar = itemView.findViewById(R.id.meanratings);
-            meanTextView = itemView.findViewById(R.id.meantext);
             linearLayout = itemView.findViewById(R.id.linearLayout);
             // Store the context
             this.context = context;
