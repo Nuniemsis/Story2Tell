@@ -210,8 +210,7 @@ public class MessagesAdapter extends
         DatabaseReference usersRefMessages = ref.child("messages");
         final DatabaseReference thisMessageRef = usersRefMessages.child(message.getPushKey());
 
-
-        ratingBar.setRating(message.getRating());
+        meanRatingBar.setRating(message.getRating());
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
 
             @Override
@@ -259,7 +258,8 @@ public class MessagesAdapter extends
                     p.numberRatings = numberRatings + 1;
 
 
-                    ratingBar.setRating(actualRating);
+                    meanRatingBar.setRating(actualRating);
+                    meanText.setText("Mean Rating: " + Float.toString(rating));
                     p.setRating(actualRating);
 
                     // Set value and report transaction success
@@ -276,14 +276,12 @@ public class MessagesAdapter extends
 
                 if (ratingBar.getVisibility() != View.GONE) {
                     ratingBar.setVisibility(View.GONE);
-                    meanRatingBar.setRating(rating);
-                    meanText.setVisibility(View.VISIBLE);
-                    meanText.setText("Mean Rating: " + Float.toString(rating));
                     meanRatingBar.setVisibility(View.VISIBLE);
                     meanRatingBar.setClickable(false);
                     meanRatingBar.setIsIndicator(true);
 
                 }
+
 
             }
         });
