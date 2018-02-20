@@ -77,19 +77,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <RatingBar
-        android:id="@+id/ratingBar"
-        android:layout_width="240dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:scaleX="0.7"
-        android:scaleY="0.7"
-        android:numStars="5"
-        android:stepSize="1.0" />
+
 
 <android.support.constraint.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/ratingBarText"
+        android:textSize="16sp"
+        android:text="Your rating: "
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintRight_toRightOf="@+id/guideline_vertical"
+        app:layout_constraintTop_toTopOf="@+id/ratingBar"
+        app:layout_constraintBottom_toBottomOf="@+id/ratingBar"
+        android:layout_height="wrap_content" />
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline_vertical"
+        app:layout_constraintBottom_toTopOf="@+id/meanratings"
+        android:scaleX="0.5"
+        android:scaleY="0.5"
+        android:numStars="5"
+        android:stepSize="1.0" />
 
 
     <TextView
