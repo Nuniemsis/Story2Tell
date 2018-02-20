@@ -103,6 +103,7 @@
         app:layout_constraintBottom_toTopOf="@+id/meanratings"
         android:scaleX="0.5"
         android:scaleY="0.5"
+        android:theme="@style/RatingBar"
         android:numStars="5"
         android:stepSize="1.0" />
 
@@ -125,6 +126,7 @@
         android:scaleX="0.5"
         android:scaleY="0.5"
         android:textStyle="bold"
+        android:theme="@style/RatingBar"
         app:layout_constraintLeft_toLeftOf="@+id/guideline_vertical"
         android:layout_height="wrap_content" />
 
