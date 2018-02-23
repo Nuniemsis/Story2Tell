@@ -173,11 +173,10 @@ public class MainActivity extends AppCompatActivity {
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MainActivity.this,
                 VERTICAL, false);
-        linearLayoutManager.setStackFromEnd(true);
-        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(false);
+        linearLayoutManager.setReverseLayout(false);
 
         messageRecycler.setLayoutManager(linearLayoutManager);
-        messageRecycler.scrollToPosition(10);
 
         progressDialog = new ProgressDialog(MainActivity.this);
         progressDialog.setMessage("Loading Data");
@@ -201,6 +200,7 @@ public class MainActivity extends AppCompatActivity {
                 if(firstTime) {
                     messageRecycler.setAdapter(adapter);
                     progressDialog.dismiss();
+                    messageRecycler.scrollToPosition(0);
                     firstTime = false;
                 }
 
